@@ -1,7 +1,7 @@
 ### GoFinance
 
 Aplicação Expo desenvolvida em React Native usando TypeScript, por Joel Leal Jr.
-![alt text](https://github.com/joellealjj/gofinances/blob/main/src/assets/images/cover.png?raw=true)
+![alt text](https://github.com/joellealjj/go-finances/blob/main/src/assets/images/cover.png?raw=true)
 
 
 Principais pacotes extra instalados
