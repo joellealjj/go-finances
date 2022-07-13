@@ -6,8 +6,8 @@ Aplicação Expo desenvolvida em React Native usando TypeScript, por Joel Leal J
 
 
 
-Atualiza .env
-npm install
+Atualiza .env \n
+npm install \n
 expo start
 
 
