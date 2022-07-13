@@ -5,6 +5,7 @@ Aplicação Expo desenvolvida em React Native usando TypeScript, por Joel Leal J
 ![alt text](https://github.com/joellealjj/go-finances/blob/main/src/assets/images/cover.png?raw=true)
 
 
+
 Atualiza .env
 npm install
 expo start
