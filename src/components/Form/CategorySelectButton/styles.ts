@@ -1,28 +1,33 @@
-import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native'
+import { Feather, MaterialIcons } from '@expo/vector-icons'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { RectButton } from 'react-native-gesture-handler'
 
-export const Container = styled(RectButton).attrs({
-  activeOpacity: 0.7
-})`
-  background-color: ${({ theme }) => theme.colors.shape};
-
+export const Container = styled(RectButton)`
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-
-  padding: 18px 16px;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.shape};
   border-radius: 5px;
-`;
-
+  width: 100%;
+  padding: 16px;
+`
 export const Category = styled.Text`
-  color: ${({ theme }) => theme.colors.title};
   font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: ${RFValue(14)}px;
-`;
-
-export const Icon = styled(Feather)`
-  font-size: ${RFValue(20)}px;
   color: ${({ theme }) => theme.colors.text};
-` as unknown as typeof Feather;
+  font-size: ${RFValue(14)}px;
+`
+export const Icon = styled(MaterialIcons)`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${RFValue(20)}px;
+`
+export const IconFeather = styled(Feather)`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${RFValue(18)}px;
+  margin-right: 10px;
+`
+
+export const CategorySelected = styled.View`
+  align-items: center;
+  flex-direction: row;
+`

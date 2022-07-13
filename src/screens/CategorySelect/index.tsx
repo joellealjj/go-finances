@@ -1,9 +1,4 @@
-import React from 'react';
-import { FlatList } from 'react-native';
-
-import { Button } from '../../components/Form/Button';
-import { categories } from '../../utils/categories';
-
+import React from 'react'
 import {
   Container,
   Header,
@@ -12,18 +7,23 @@ import {
   Icon,
   Name,
   Separator,
-  Footer,
-} from './styles';
+  Footer
+} from './styles'
+import { categories } from '../../utils/categories'
 
-interface Category {
-  key: string;
-  name: string;
+import { FlatList } from 'react-native'
+import { Button } from '../../components/Form/Button'
+
+interface CategoryProps {
+  key: string
+  name: string
+  icon: string
 }
 
 interface Props {
-  category: Category;
-  setCategory: (category: Category) => void;
-  closeSelectCategory: () => void;
+  category: CategoryProps
+  setCategory: (category: CategoryProps) => void
+  closeSelectCategory: () => void
 }
 
 export function CategorySelect({
@@ -31,42 +31,35 @@ export function CategorySelect({
   setCategory,
   closeSelectCategory
 }: Props) {
-
-  function handleCategorySelect(item: Category) {
-    setCategory(item);
+  function handleCategorySelect(category: CategoryProps) {
+    setCategory(category)
   }
 
   return (
     <Container>
       <Header>
-        <Title>
-          Categoria
-        </Title>
+        <Title>Categoria</Title>
       </Header>
 
       <FlatList
         data={categories}
-        keyExtractor={item => item.key}
+        keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
           <Category
-            isActive={category.key === item.key}
             onPress={() => handleCategorySelect(item)}
+            isActive={category.key === item.key}
           >
             <Icon name={item.icon} />
             <Name>{item.name}</Name>
           </Category>
         )}
-        ItemSeparatorComponent={() => <Separator />}
         style={{ flex: 1, width: '100%' }}
+        ItemSeparatorComponent={() => <Separator />}
       />
 
       <Footer>
-        <Button
-          title='Selecionar'
-          onPress={closeSelectCategory}
-        />
+        <Button title={'Selecionar'} onPress={closeSelectCategory} />
       </Footer>
-
     </Container>
-  );
+  )
 }

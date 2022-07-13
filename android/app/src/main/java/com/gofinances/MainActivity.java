@@ -1,5 +1,8 @@
 package com.gofinances;
 
+import org.devio.rn.splashscreen.SplashScreen;
+import android.os.Bundle;
+
 import android.os.Build;
 import android.os.Bundle;
 
@@ -53,5 +56,11 @@ public class MainActivity extends ReactActivity {
     // Use the default back button implementation on Android S
     // because it's doing more than {@link Activity#moveTaskToBack} in fact.
     super.invokeDefaultOnBackPressed();
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      SplashScreen.show(this);
+      super.onCreate(savedInstanceState);
   }
 }

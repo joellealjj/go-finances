@@ -1,13 +1,13 @@
-import React from 'react';
-import { Amount, Container, Title } from './styles';
+import React from 'react'
+import { Container, Title, Amount } from './styles'
 
-interface HistoryCardProps {
-  title: string;
-  color: string;
-  amount: string;
+interface Props {
+  color: string
+  title: string
+  amount: string
 }
 
-export function HistoryCard({title, color, amount}: HistoryCardProps) {
+export function HistoryCard({ color, amount, title }: Props) {
   return (
     <Container color={color}>
       <Title>{title}</Title>

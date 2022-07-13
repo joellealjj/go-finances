@@ -1,9 +1,8 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import { SignIn } from '../screens/SignIn'
 
-import { SignIn } from '../screens/SignIn';
-
-const { Navigator, Screen } = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
   return (
@@ -12,10 +11,7 @@ export function AuthRoutes() {
         headerShown: false
       }}
     >
-      <Screen
-        name="SignIn"
-        component={SignIn}
-      />
+      <Screen name={'SignIn'} component={SignIn} />
     </Navigator>
   )
 }

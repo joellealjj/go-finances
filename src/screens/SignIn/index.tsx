@@ -1,43 +1,52 @@
-import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Platform } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { SignInSocialButton } from '../../components/SignInSocialButton';
-import { useAuth } from '../../hooks/auth';
+import React, { useContext, useState } from 'react'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { SignInSocialButton } from '../../components/SignInSocialButton'
 
-import AppleSvg from '../../assets/apple.svg';
-import GoogleSvg from '../../assets/google.svg';
-import LogoSvg from '../../assets/logo.svg';
-
-import { useTheme } from 'styled-components/native';
+import AppleSvg from '../../assets/apple.svg'
+import GoogleSvg from '../../assets/google.svg'
+import LogoSvg from '../../assets/logo.svg'
+import { useAuth } from '../../hooks/auth'
 import {
-  Container, Footer, FooterWrapper, Header, SignInTitle, Title, TitleWrapper
-} from './styles';
+  Container,
+  Title,
+  Header,
+  TitleWrapper,
+  SignInTitle,
+  Footer,
+  FooterWrapper
+} from './styles'
+import { Alert, Platform } from 'react-native'
+import { Loading } from '../../components/Loading'
 
 export function SignIn() {
-  const [isLoading, setIsloading] = useState(false);
-  const { signInWithGoogle, signInWithApple } = useAuth();
+  const [isLoading, setIsLoading] = useState(false)
+  const { signInWithGoogle, signInWithApple } = useAuth()
 
-  const theme = useTheme();
-
-  async function handleSignWithGoogle() {
+  async function handleSignInWithGoogle() {
     try {
-      setIsloading(true);
-      return await signInWithGoogle();
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Não foi possível conectar a conta Google');
-      setIsloading(false);
+      setIsLoading(true)
+      return await signInWithGoogle()
+    } catch (e) {
+      console.log(e)
+      Alert.alert(
+        'Falha de autenticação',
+        'Não foi possível conectar com a conta do Google'
+      )
+      setIsLoading(false)
     }
   }
 
-  async function handleSignWithApple() {
+  async function handleSignInWithApple() {
     try {
-      setIsloading(true);
-      return await signInWithApple();
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Não foi possível conectar a conta Apple');
-      setIsloading(false);
+      setIsLoading(true)
+      return await signInWithApple()
+    } catch (e) {
+      console.log(e)
+      Alert.alert(
+        'Falha de autenticação',
+        'Não foi possível conectar com a conta Apple'
+      )
+      setIsLoading(false)
     }
   }
 
@@ -45,42 +54,33 @@ export function SignIn() {
     <Container>
       <Header>
         <TitleWrapper>
-          <LogoSvg
-            width={RFValue(120)}
-            height={RFValue(68)}
-          />
-
+          <LogoSvg width={RFValue(120)} height={RFValue(68)} />
           <Title>
-            Controle suas {'\n'}
-            finanças de forma {'\n'}
-            muito simples {'\n'}
+            Controle suas {'\n'} finanças de forma {'\n'} muito simples
           </Title>
         </TitleWrapper>
 
         <SignInTitle>
-          Faça o seu login com {'\n'}
-          umas das contas abaixo
+          Faça seu login com {'\n'} uma das contas abaixo
         </SignInTitle>
       </Header>
-
       <Footer>
         <FooterWrapper>
           <SignInSocialButton
-            onPress={handleSignWithGoogle}
-            title="Entrar com Google"
+            title={'Entrar com Google'}
             svg={GoogleSvg}
+            onPress={handleSignInWithGoogle}
           />
-
-          { Platform.OS === 'ios' && (
+          {Platform.OS === 'ios' && (
             <SignInSocialButton
-              onPress={handleSignWithApple}
-              title="Entrar com Apple"
+              title={'Entrar com Apple'}
               svg={AppleSvg}
+              onPress={handleSignInWithApple}
             />
-          ) }
+          )}
         </FooterWrapper>
 
-        { isLoading && <ActivityIndicator color={theme.colors.shape} size="large" style={{ marginTop: 18 }} /> }
+        {isLoading && <Loading />}
       </Footer>
     </Container>
   )

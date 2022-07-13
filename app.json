@@ -1,11 +1,34 @@
 {
+  "name": "gofinances",
+  "displayName": "gofinances",
   "expo": {
     "name": "gofinances",
+    "owner": "joellealjj",
     "slug": "gofinances",
-    "scheme": "gofinances",
     "version": "1.0.0",
+    "icon": "./assets/icon.png",
+    "scheme": "gofinances",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#474954"
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.gofinances",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#474954"
+      },
+      "package": "com.gofinances",
+      "versionCode": 1
+    },
+    "description": "App para controle financeiro.",
+    "githubUrl": "https://github.com/joellealjj/go-finances"
   }
 }
